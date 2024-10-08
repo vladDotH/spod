@@ -1,3 +1,4 @@
 *.vscode
 lab*/lab*
 test
+*.png
