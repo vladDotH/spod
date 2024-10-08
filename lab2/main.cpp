@@ -1,7 +1,6 @@
 #include <mpi.h>
 
 #include <iostream>
-#include <vector>
 
 int main(int argc, char **argv) {
   MPI::Init(argc, argv);
@@ -48,7 +47,7 @@ int main(int argc, char **argv) {
 
     std::cout << "[master:0]" << " time: " << time << "s." << std::endl;
   }
-  // odd slave
+  // odd slave: получаем требуемое количество обменов и обмениваемся со следующим чётным процессом
   else if (group == 1) {
     int currentMsgCount;
     bool end = false;
@@ -68,7 +67,7 @@ int main(int argc, char **argv) {
     std::cout << "[" << procRank << "] end of sending" << std::endl;
     comm.Send(nullptr, 0, MPI::BOOL, 0, 0);
   }
-  // even slave
+  // even slave: обмениваемся с предыдущим нечётным процессом сообщениями, пока не придёт флаг окончания
   else {
     bool end = false;
     while (!end) {
