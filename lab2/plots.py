@@ -91,18 +91,18 @@ plt.xlabel("Количество процессоров")
 plt.ylabel("Время работы, сек.")
 
 plt.title("1000 сообщений")
-p = plt.plot(X, r1000, marker="o")
-plt.savefig('time1000.png')
+p = plt.plot(X, r1000, marker="o", color="blue")
+plt.savefig("time1000.png")
 p[0].remove()
 
 plt.title("100000 сообщений")
 p = plt.plot(X, r100000, marker="o", color="olive")
-plt.savefig('time100000.png')
+plt.savefig("time100000.png")
 p[0].remove()
 
 plt.title("10000000 сообщений")
 p = plt.plot(X, r10000000, marker="o", color="crimson")
-plt.savefig('time10000000.png')
+plt.savefig("time10000000.png")
 p[0].remove()
 
 
@@ -110,15 +110,15 @@ plt.xlabel("Количество процессоров")
 plt.ylabel("Ускорение")
 
 plt.title("1000 сообщений")
-p = plt.plot(X, s1000, marker="o")
-plt.savefig('speedup1000.png')
+p = plt.plot(X, s1000, marker="o", color="blue")
+plt.savefig("speedup1000.png")
 p[0].remove()
 
 plt.title("100000 сообщений")
 p = plt.plot(X, s100000, marker="o", color="olive")
-plt.savefig('speedup100000.png')
+plt.savefig("speedup100000.png")
 p[0].remove()
 
 plt.title("10000000 сообщений")
 plt.plot(X, s10000000, marker="o", color="crimson")
-plt.savefig('speedup10000000.png')
+plt.savefig("speedup10000000.png")
