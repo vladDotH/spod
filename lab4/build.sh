@@ -1,0 +1,1 @@
+mpicxx.openmpi main.cpp -o lab4
