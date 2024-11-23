@@ -16,22 +16,26 @@ int main(int argc, char **argv) {
     throw MPI::Exception(MPI::ERR_ARG);
   }
 
+  double time = 0, start, end;
+
   int W = N;
   int H = K / N;
 
   const int dims[] = {W, H};
   const bool periods[] = {false, false};
+  int coords[2], rank;
 
-  MPI::Cartcomm cartComm = worldComm.Create_cart(2, dims, periods, false); 
+  start = MPI::Wtime();
 
-  const int rank = cartComm.Get_rank();
-
-  int coords[2];
-
+  MPI::Cartcomm cartComm = worldComm.Create_cart(2, dims, periods, false);
+  rank = cartComm.Get_rank();
   cartComm.Get_coords(rank, 2, coords);
 
+  end = MPI::Wtime();
+  time += end - start;
+
   std::cout << "[" << cartComm.Get_rank() << "] pos = {" << coords[0] << ", "
-            << coords[1] << "}" << std::endl;
+            << coords[1] << "}; time = " << time << std::endl;
 
   MPI::Finalize();
 }
