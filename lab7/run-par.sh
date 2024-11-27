@@ -1,0 +1,1 @@
+mpiexec.openmpi -n $1 --oversubscribe ./lab7-parallel ${@:2}
